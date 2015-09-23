@@ -42,6 +42,7 @@ public class Main {
                 .map(s -> s.equals("Down") ? "↓" : s)
                 .map(s -> s.equals("Right") ? "→" : s)
                 .map(s -> s.equals("Left") ? "←" : s)
+                .map(s -> s.length() > 1 ? "[" + s +"]" : s)
                 .buffer(5, TimeUnit.SECONDS)
                 .flatMap((it) -> Observable.just(it.stream().reduce((l, r) -> l + r)))
                 .filter(Optional::isPresent)
