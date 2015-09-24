@@ -37,7 +37,7 @@ public class Main {
                 .flatMap((it) -> Observable.just(it.stream().reduce((l, r) -> l + r)))
                 .filter(Optional::isPresent)
                 .map(Optional::get)
-                .flatMap((String it) -> Observable.from(it.split("Enter")))
+                .flatMap((String it) -> Observable.from(it.split("\\[Enter\\]")))
                 .filter(s -> s != null && !s.isEmpty())
                 .subscribe(new LogObserver());
 
